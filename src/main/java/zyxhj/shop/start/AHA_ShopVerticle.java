@@ -2,7 +2,6 @@ package zyxhj.shop.start;
 
 
 import io.vertx.core.Vertx;
-import zyxhj.shop.service.ShopService;
 import zyxhj.shop.service.UserService;
 import zyxhj.utils.Singleton;
 import zyxhj.utils.ZeroVerticle;
@@ -24,7 +23,6 @@ public class AHA_ShopVerticle extends ZeroVerticle {
 
 	protected void init() throws Exception {
 
-		initCtrl(ctrlMap, Singleton.ins(ShopService.class, "shop"));
 		initCtrl(ctrlMap, Singleton.ins(UserService.class, "user"));
 
 	}

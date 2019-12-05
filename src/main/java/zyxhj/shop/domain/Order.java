@@ -8,6 +8,12 @@ import zyxhj.utils.data.rds.RDSAnnEntity;
 import zyxhj.utils.data.rds.RDSAnnField;
 import zyxhj.utils.data.rds.RDSAnnID;
 
+/**
+ * 订单表
+ * @author JXians
+ *
+ */
+
 @RDSAnnEntity(alias = "tb_shop_order")
 public class Order {
 
@@ -28,7 +34,6 @@ public class Order {
 	/**
 	 * 门店编号
 	 */
-	
 	@RDSAnnField(column = RDSAnnField.ID)
 	public Long storeId;
 
@@ -38,6 +43,12 @@ public class Order {
 	@RDSAnnField(column = RDSAnnField.ID)
 	public Long productId;
 
+	/**
+	 * 商品sku信息
+	 */
+	@RDSAnnField(column = RDSAnnField.LONG)
+	public Long sku;
+	
 	/**
 	 * 买家用户编号
 	 */
@@ -49,30 +60,18 @@ public class Order {
 	 */
 	@RDSAnnField(column = RDSAnnField.ID)
 	public Long addressId;
-
+	
 	/**
-	 * 卖家推广员用户编号
+	 * 购买数量
 	 */
-	@RDSAnnField(column = RDSAnnField.ID)
-	public Long pramoterId;
-
+	@RDSAnnField(column = RDSAnnField.INTEGER)
+	public Integer quantity;
+	
 	/**
-	 * 分销用户编号（只记录直接上级）
-	 */
-	@RDSAnnField(column = RDSAnnField.ID)
-	public Long resellerId;
-
-	/**
-	 * 商品售价
+	 * 总金额
 	 */
 	@RDSAnnField(column = RDSAnnField.DOUBLE)
-	public Double productPrice;
-
-	/**
-	 * 最终成交价
-	 */
-	@RDSAnnField(column = RDSAnnField.DOUBLE)
-	public Double donePrice;
+	public Double amount;
 
 	/**
 	 * 标题
@@ -87,34 +86,11 @@ public class Order {
 	public Byte status;
 	
 	/**
-	 * 渠道编号
-	 */
-	@RDSAnnField(column = RDSAnnField.TEXT_TITLE)
-	public String channelId;
-	
-	/**
 	 * 创建时间
 	 */
 	@RDSAnnField(column = RDSAnnField.TIME)
 	public Date createTime;
 	
-	/**
-	 * 渠道类型
-	 */
-	@RDSAnnField(column = RDSAnnField.TEXT_TITLE)
-	public String channelType;
-	
-	/**
-	 * 商品详细信息
-	 */
-	@RDSAnnField(column = RDSAnnField.TEXT_TITLE)
-	public Product product;
-	
-	/**
-	 * 商品sku信息
-	 */
-	@RDSAnnField(column = RDSAnnField.SHORT_TEXT)
-	public String sku;
 	
 	
 	
