@@ -17,7 +17,7 @@
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 
-		<main.verticle>xhj.cn.start.JITIVerticle</main.verticle>
+		<main.verticle>zyxhj.shop.start.AHA_ShopVerticle</main.verticle>
 	</properties>
 
 	<dependencies>
