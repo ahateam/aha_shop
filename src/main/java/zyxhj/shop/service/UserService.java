@@ -7,7 +7,6 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import com.alibaba.druid.pool.DruidPooledConnection;
-import com.alipay.api.domain.Data;
 
 import zyxhj.core.repository.UserRepository;
 import zyxhj.shop.domain.UserAddress;
@@ -136,6 +135,22 @@ public class UserService {
 			Integer offset) throws Exception {
 		return addressRepository.getList(conn, EXP.INS().key("module_id", moduleId).andKey("user_id", userId), count,
 				offset);
+	}
+
+	/**
+	 * 删除用户收货地址
+	 * 
+	 * @param conn
+	 * @param moduleId  模块编号
+	 * @param userId    用户编号
+	 * @param addressId 需要删除的地址编号
+	 * @return
+	 * @throws Exception
+	 */
+	public int deleteUserAddress(DruidPooledConnection conn, Long moduleId, Long userId, Long addressId)
+			throws Exception {
+		return addressRepository.delete(conn,
+				EXP.INS().key("module_id", moduleId).andKey("user_id", userId).andKey("id", addressId));
 	}
 
 }
