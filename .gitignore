@@ -9,5 +9,9 @@ target/
 .project
 .vertx/
 .class
-
+node_modules
+/dist
+.idea
+.vscode
+package-lock.json
 
