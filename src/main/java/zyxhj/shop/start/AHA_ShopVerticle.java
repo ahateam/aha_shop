@@ -2,7 +2,7 @@ package zyxhj.shop.start;
 
 
 import io.vertx.core.Vertx;
-import zyxhj.shop.service.UserService;
+import zyxhj.core.controller.UserController;
 import zyxhj.utils.Singleton;
 import zyxhj.utils.ZeroVerticle;
 
@@ -23,7 +23,8 @@ public class AHA_ShopVerticle extends ZeroVerticle {
 
 	protected void init() throws Exception {
 
-		initCtrl(ctrlMap, Singleton.ins(UserService.class, "user"));
+		initCtrl(ctrlMap, Singleton.ins(UserController.class, "user"));
+		initCtrl(ctrlMap, Singleton.ins(zyxhj.shop.controller.UserController.class, "shopUser"));
 
 	}
 }
