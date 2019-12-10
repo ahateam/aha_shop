@@ -28,12 +28,15 @@ public class Test {
 			SyncClient client = DataSource.getTableStoreSyncClient("tsDefault.prop");
 //
 //			RDSUtils.createTableByEntity(dds, Channel.class);
-			RDSUtils.createTableByEntity(dds, Order.class);
-			RDSUtils.createTableByEntity(dds, Product.class);
-			RDSUtils.createTableByEntity(dds, ProductSpecs.class);
-			RDSUtils.createTableByEntity(dds, ShopTraffic.class);
-			RDSUtils.createTableByEntity(dds, Store.class);
+//			RDSUtils.createTableByEntity(dds, Order.class);
+//			RDSUtils.createTableByEntity(dds, Product.class);
+//			RDSUtils.createTableByEntity(dds, ProductSpecs.class);
+//			RDSUtils.createTableByEntity(dds, ShopTraffic.class);
+//			RDSUtils.createTableByEntity(dds, Store.class);
+			
+			
 			RDSUtils.createTableByEntity(dds, UserAddress.class);
+//			RDSUtils.dropTableByEntity(dds, UserAddress.class);
 
 //			TSUtils.createTableByEntity(client, Appraise.class);
 

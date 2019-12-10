@@ -45,7 +45,7 @@ public class UserService {
 	 * @param isDefault 是否默认地址
 	 */
 	public void createAddress(DruidPooledConnection conn, Long moduleId, Long userId, String userName, String userPhone,
-			String province, String city, String detailed, Byte isDefault) throws Exception {
+			String province, String city, String detailed, Boolean isDefault) throws Exception {
 		UserAddress address = new UserAddress();
 		address.id = IDUtils.getSimpleId();
 		address.moduleId = moduleId;
@@ -56,10 +56,10 @@ public class UserService {
 		address.city = city;
 		address.detailed = detailed;
 		address.status = UserAddress.STATUS_YES;
-		if (0 == isDefault) {
-			address.isDefault = UserAddress.ISDEFAULT_YES;
-		} else {
+		if (null == isDefault) {
 			address.isDefault = UserAddress.ISDEFAULT_NO;
+		} else {
+			address.isDefault = UserAddress.ISDEFAULT_YES;
 		}
 
 		address.createTime = new Date();
@@ -81,7 +81,7 @@ public class UserService {
 	 * @throws Exception
 	 */
 	public int editAddress(DruidPooledConnection conn, Long addressId, String userName, String userPhone,
-			String province, String city, String detailed, Byte isDefault) throws Exception {
+			String province, String city, String detailed, Boolean isDefault) throws Exception {
 		UserAddress address = new UserAddress();
 		address.userName = userName;
 		address.userPhone = userPhone;
@@ -89,10 +89,10 @@ public class UserService {
 		address.city = city;
 		address.detailed = detailed;
 		address.status = UserAddress.STATUS_YES;
-		if (0 == isDefault) {
-			address.isDefault = UserAddress.ISDEFAULT_YES;
-		} else {
+		if (null == isDefault) {
 			address.isDefault = UserAddress.ISDEFAULT_NO;
+		} else {
+			address.isDefault = UserAddress.ISDEFAULT_YES;
 		}
 		return addressRepository.update(conn, EXP.INS().key("id", addressId), address, true);
 	}
@@ -111,8 +111,7 @@ public class UserService {
 			throws Exception {
 		// 将默认地址取消
 		EXP set = EXP.INS().key("is_default", UserAddress.ISDEFAULT_NO);
-		EXP where = EXP.INS().key("module_id", moduleId).andKey("user_id", userId).andKey("id_default",
-				UserAddress.ISDEFAULT_YES);
+		EXP where = EXP.INS().key("module_id", moduleId).andKey("user_id", userId);
 		addressRepository.update(conn, set, where);
 
 		// 将当前地址设置为默认地址

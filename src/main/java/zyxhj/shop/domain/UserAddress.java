@@ -68,7 +68,7 @@ public class UserAddress {
 	 *是否默认
 	 */
 	@RDSAnnField(column = RDSAnnField.TEXT_TITLE)
-	public Byte isDefault;
+	public Boolean isDefault;
 	
 	/**
 	 *是否有效状态
@@ -84,9 +84,9 @@ public class UserAddress {
 	
 	
 	@AnnDicField(alias = "默认收货地址")
-	public static final Byte ISDEFAULT_YES = 0;
+	public static final Boolean ISDEFAULT_YES = true;
 	@AnnDicField(alias = "非默认")
-	public static final Byte ISDEFAULT_NO = 1;
+	public static final Boolean ISDEFAULT_NO = false;
 	
 	@AnnDicField(alias = "有效")
 	public static final Byte STATUS_YES= 0;

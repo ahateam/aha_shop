@@ -42,7 +42,7 @@ public class UserController extends Controller {
 			@P(t = "省") String province, //
 			@P(t = "市") String city, //
 			@P(t = "详细地址") String detailed, //
-			@P(t = "是否默认地址") Byte isDefault//
+			@P(t = "是否默认地址",r = false) Boolean isDefault//
 	) throws Exception {
 		try (DruidPooledConnection conn = ds.getConnection()) {
 			userService.createAddress(conn, moduleId, userId, userName, userPhone, province, city, detailed, isDefault);
@@ -62,7 +62,7 @@ public class UserController extends Controller {
 			@P(t = "省") String province, //
 			@P(t = "市") String city, //
 			@P(t = "详细地址") String detailed, //
-			@P(t = "是否默认地址") Byte isDefault//
+			@P(t = "是否默认地址",r = false) Boolean isDefault//
 	) throws Exception {
 		try (DruidPooledConnection conn = ds.getConnection()) {
 			return APIResponse.getNewSuccessResp(
@@ -98,6 +98,21 @@ public class UserController extends Controller {
 	) throws Exception {
 		try (DruidPooledConnection conn = ds.getConnection()) {
 			return APIResponse.getNewSuccessResp(userService.getUserAddressList(conn, moduleId, userId, count, offset));
+		}
+	}
+	
+	@POSTAPI(//
+			path = "delUserAddress", //
+			des = "删除用户收货地址列表", //
+			ret = "受影响行数"//
+	)
+	public APIResponse delUserAddress(//
+			@P(t = "模块编号") Long moduleId, //
+			@P(t = "用户编号") Long userId, //
+			@P(t = "收货地址编号") Long addressId //
+	) throws Exception {
+		try (DruidPooledConnection conn = ds.getConnection()) {
+			return APIResponse.getNewSuccessResp(userService.deleteUserAddress(conn, moduleId, userId, addressId));
 		}
 	}
 
